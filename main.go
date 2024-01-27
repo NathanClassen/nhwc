@@ -149,7 +149,7 @@ func (cd *countdata) cres() {
 
 func getCountData() ([]*countdata, error) {
 	args := flag.Args()
-	//	TODO if no file inputs, read stdin
+
 	var data []*countdata
 
 	if len(args) == 0 {
