@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"strings"
 	"unicode"
@@ -38,10 +39,15 @@ func main() {
 	if !(*l || *w || *m || *c) {
 		allF = true
 	}
-	cntobjects, _ := getCountData()
+	cntobjects, err := getCountData()
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 	processCounts(cntobjects)
 	writeres(cntobjects)
+
+	os.Exit(0)
 }
 
 func writeres(cnts []*countdata) {
@@ -174,7 +180,7 @@ func getCountData() ([]*countdata, error) {
 func getStdinAsInput() ([]*countdata, error) {
 	data, err := io.ReadAll(os.Stdin)
 	if err != nil {
-		panic(err)
+		log.Fatalln(err)
 	}
 	return []*countdata{{filename: "", data: data}}, nil
 }
