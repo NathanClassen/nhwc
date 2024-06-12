@@ -1,4 +1,4 @@
-# nhwc - nathanhayesWordCount
+# nhwc
 
 ### A full-featured clone of the Unix tool `wc` written in Go!
 Written to solve the first challenge over at [Coding Challenges](https://codingchallenges.fyi/challenges/challenge-wc)
